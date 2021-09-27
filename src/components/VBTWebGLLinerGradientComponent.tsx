@@ -11,6 +11,7 @@ export type VBTWebGLLinerGradientComponentProps = {
     startPosition: string, // [1.0,2.0]
     endPosition: string,// [1.0,2.0]
 
+    opacity?: number,
 
     angle: number,
     useAngle: boolean,
@@ -86,6 +87,10 @@ export function VBTWebGLLinerGradientComponent(props: VBTWebGLLinerGradientCompo
     useEffect(() => {
         if(props.app) props.app.setStops(JSON.parse(props.stops));
     }, [props.stops]);
+
+    useEffect(() => {
+        if(props.app) props.app.setOpacity(props.opacity);
+    }, [props.opacity]);
 
     useEffect(() => {
         if(props.app) props.app.setColors(JSON.parse(props.colors).map((color: string) => new Color(color)));

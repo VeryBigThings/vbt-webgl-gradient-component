@@ -3,6 +3,7 @@ uniform vec3 iResolution;
 
 uniform vec2 startPosition;
 uniform vec2 endPosition;
+uniform float opacity;
 uniform float angle;
 uniform bool useAngle;
 uniform int numberOfStops;
@@ -53,5 +54,5 @@ void main(){
             } else { break; }
         }
     }
-    gl_FragColor = gl_FragColor;
+    gl_FragColor.w = opacity;
 }

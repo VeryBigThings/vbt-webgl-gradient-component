@@ -35,6 +35,7 @@ export default class App extends React.Component<MyProps, MyState> {
                         startPosition={'[0.0,0.0]'}
                         endPosition={'[0.8,0.8]'}
                         angle={1.1344}
+                        opacity={1}
                         useAngle={true}
                         stops={'[0.13, 0.33, 0.66, 0.99]'}
                         colors={'["#EB3860", "#E82D5A", "#E43B3B", "#FFC224"]'}

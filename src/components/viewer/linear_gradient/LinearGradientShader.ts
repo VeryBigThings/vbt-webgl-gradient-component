@@ -9,6 +9,7 @@ export class LinearGradientShader extends Shader {
             {
                 startPosition: new Uniform(new Vector2(0, 0)),
                 endPosition: new Uniform(new Vector2(1, 1)),
+                opacity: new Uniform(1),
                 angle: new Uniform(0),
                 useAngle: new Uniform(true),
                 numberOfStops: new Uniform(1),
@@ -47,6 +48,9 @@ export class LinearGradientShader extends Shader {
 
     setEndPosition(endPosition: Vector2) {
         this.uniforms.endPosition.value.copy(endPosition);
+    }
+    setOpacity(opacity: number) {
+        this.uniforms.opacity.value = opacity;
     }
 
     setAngle(angle: number, useAngle?: boolean) {
