@@ -2,6 +2,9 @@ import {Shader} from '../Shader';
 import {Color, Uniform, Vector2} from 'three';
 
 export class LinearGradientShader extends Shader {
+    private speed: number;
+    private minValue: number;
+    private maxValue: number;
     constructor() {
         super(
             require('./fragment.glsl'),
@@ -40,6 +43,14 @@ export class LinearGradientShader extends Shader {
 
     update(time: number, width: number, height: number) {
         super.update(time, width, height);
+
+        if(this.speed) {
+            const secondsNow = Date.now() / 1000;
+
+            const sin = (1 + Math.sin(secondsNow * this.speed) ) / 2;
+            const val = this.minValue + (this.maxValue - this.minValue) * sin;
+            this.setOpacity(val)
+        }
     }
 
     setStartPosition(startPosition: Vector2) {
@@ -77,5 +88,12 @@ export class LinearGradientShader extends Shader {
             }
         }
         this.uniforms.colors.value = colors;
+    }
+
+    setOpacityAnimation(speed: number, minValue: number, maxValue: number) {
+        this.speed = speed;
+        this.minValue = minValue;
+        this.maxValue = maxValue;
+
     }
 }
