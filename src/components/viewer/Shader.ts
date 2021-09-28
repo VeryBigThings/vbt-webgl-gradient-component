@@ -28,7 +28,8 @@ export class Shader extends PlaneMaterialRenderer {
             fragmentShader: this.fragmentShader,
             vertexShader: this.vertexShader,
             uniforms: this.uniforms,
-            defines: this.defines
+            defines: this.defines,
+            transparent: true
         });
         this.init(material);
     }

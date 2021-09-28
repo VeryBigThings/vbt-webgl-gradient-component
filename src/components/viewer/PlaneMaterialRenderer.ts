@@ -19,11 +19,12 @@ export class PlaneMaterialRenderer {
      * aspectRatio = height / width;
      */
     public aspectRatio: number = 0;
+    private previousAspectRatio: number = 0;
 
     init(material: Material) {
         this.canvas = (document.createElement('canvas') as HTMLCanvasElement);
-        this.canvas.id = `webglApp_${makeId()}`;
-        this.canvas.style.height = 'auto';
+        this.canvas.id = `webglApp_gradient_${makeId()}`;
+        this.canvas.style.height = '100%';
         this.canvas.style.width = '100%';
         this.renderer = new WebGLRenderer({canvas: this.canvas, alpha: true});
         this.renderer.autoClearColor = true;
@@ -47,6 +48,11 @@ export class PlaneMaterialRenderer {
         scene.add(new Mesh(plane, material));
 
         const resizeRendererToDisplaySize = (renderer: WebGLRenderer) => {
+            if(this.previousAspectRatio !== this.aspectRatio) {
+                this.canvas.style.height = this.aspectRatio === 0 ? '100%' : 'auto';
+
+                this.previousAspectRatio = this.aspectRatio;
+            }
             const canvas = renderer.domElement;
             const width = canvas.clientWidth;
             const height = this.aspectRatio === 0 ? canvas.clientHeight : canvas.clientWidth * this.aspectRatio;
