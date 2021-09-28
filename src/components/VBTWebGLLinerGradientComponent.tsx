@@ -19,6 +19,10 @@ export type VBTWebGLLinerGradientComponentProps = {
     stops: string, // JSON string of array of numbers
     colors: string, // JSON string of array of strings (colors like #fff)
 
+    opacitySpeed?: number,
+    opacityMinValue?: number,
+    opacityMaxValue?: number
+
 };
 
 export function VBTWebGLLinerGradientComponent(props: VBTWebGLLinerGradientComponentProps) {
@@ -83,6 +87,9 @@ export function VBTWebGLLinerGradientComponent(props: VBTWebGLLinerGradientCompo
     useEffect(() => {
         if(props.app) props.app.setAngle(props.angle, props.useAngle);
     }, [props.angle, props.useAngle]);
+    useEffect(() => {
+        if(props.app) props.app.setOpacityAnimation(props.opacitySpeed, props.opacityMinValue, props.opacityMaxValue);
+    }, [props.opacitySpeed, props.opacityMinValue, props.opacityMaxValue]);
 
     useEffect(() => {
         if(props.app) props.app.setStops(JSON.parse(props.stops));
