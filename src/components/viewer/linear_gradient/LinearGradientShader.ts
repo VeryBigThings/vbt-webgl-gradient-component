@@ -36,9 +36,6 @@ export class LinearGradientShader extends Shader {
                     new Color(), new Color(), new Color(), new Color(),
                 ]),
             });
-
-
-        console.log('LinearGradientShader', this)
     }
 
     update(time: number, width: number, height: number) {
