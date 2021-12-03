@@ -28,7 +28,8 @@
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1",
     "three": "0.131.3",
-    "copyfiles": "^2.3.0"
+    "copyfiles": "^2.3.0",
+    "glsl-shader-loader": "^0.1.6"
   },
   "scripts": {
     "start": "node scripts/start.js",
