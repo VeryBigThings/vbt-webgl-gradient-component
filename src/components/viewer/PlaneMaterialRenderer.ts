@@ -20,6 +20,7 @@ export class PlaneMaterialRenderer {
      */
     public aspectRatio: number = 0;
     private previousAspectRatio: number = 0;
+    private requestAnimationFrameID: number;
 
     init(material: Material) {
         this.canvas = (document.createElement('canvas') as HTMLCanvasElement);
@@ -84,10 +85,10 @@ export class PlaneMaterialRenderer {
 
                 this.renderer.render(scene, camera);
             }
-            requestAnimationFrame(render);
+            this.requestAnimationFrameID = requestAnimationFrame(render);
         }
 
-        requestAnimationFrame(render);
+        this.requestAnimationFrameID = requestAnimationFrame(render);
     }
 
     update(time: number, width: number, height: number) {
@@ -97,6 +98,7 @@ export class PlaneMaterialRenderer {
     destroy() {
         this.renderer.dispose();
         this.material.dispose();
+        cancelAnimationFrame(this.requestAnimationFrameID);
     }
 
     getDOMElement() {
