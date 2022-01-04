@@ -2,9 +2,6 @@
   "name": "@verybigthings/vbt-webgl-gradient-component",
   "version": "0.1.10",
   "private": false,
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/@VeryBigThings"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/VeryBigThings/vbt-webgl-gradient-component.git"
